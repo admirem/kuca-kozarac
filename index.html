@@ -1,123 +1,272 @@
 <!DOCTYPE html>
 <html lang="ba">
+
 <head>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haus zu verkaufen</title>
-<style>
-body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f5f5f5;color:#333}
-header{height:70vh;background:url('images/hero.jpg') center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:white;text-align:center}
-header h1{font-size:48px;background:rgba(0,0,0,0.5);padding:20px;border-radius:10px}
-section{max-width:1000px;margin:auto;padding:60px 20px}
-h2{text-align:center;margin-bottom:30px}
-.details{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;text-align:center}
-.card{background:white;padding:20px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
-.gallery img{width:100%;border-radius:8px}
-.downloads a{display:block;margin:10px 0;padding:12px;background:#2c7be5;color:white;text-decoration:none;border-radius:6px;text-align:center}
-.contact{text-align:center;background:#ffffff;padding:40px;border-radius:10px}
-footer{text-align:center;padding:20px;font-size:14px;color:#666}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haus zu verkaufen</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            background: #f5f5f5;
+            color: #333
+        }
+
+        header {
+            height: 70vh;
+            background: url('images/hero.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center
+        }
+
+        header h1 {
+            font-size: 48px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px
+        }
+
+        section {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 20px
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px
+        }
+
+        .details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1)
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 8px
+        }
+
+        .downloads a {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            background: #2c7be5;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center
+        }
+
+        .contact {
+            text-align: center;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #666
+        }
+    </style>
 </head>
+<script>
+    const images = [
+        "images/parcele.png",
+        "images/house1.png",
+        "images/house2.png"
+    ];
+
+    let currentImageIndex = 0;
+
+    function openLightbox(index) {
+        currentImageIndex = index;
+        document.getElementById("lightbox-img").src = images[currentImageIndex];
+        document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+        document.getElementById("lightbox").style.display = "none";
+    }
+
+    function changeImage(direction) {
+        currentImageIndex += direction;
+
+        if (currentImageIndex < 0) {
+            currentImageIndex = images.length - 1;
+        }
+
+        if (currentImageIndex >= images.length) {
+            currentImageIndex = 0;
+        }
+
+        document.getElementById("lightbox-img").src = images[currentImageIndex];
+    }
+
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") changeImage(-1);
+        if (e.key === "ArrowRight") changeImage(1);
+    });
+</script>
+
 <body>
 
-<header>
-<h1>Prostrana kuća + poslovni prostor na velikoj parceli - Kozarac Trnopolje</h1>
-</header>
+    <header>
+        <h1>Prostrana kuća + poslovni prostor na velikoj parceli - Kozarac Trnopolje</h1>
+    </header>
 
-<section>
-<h2>Detalji Objekta</h2>
-<div class="details">
-<div class="card"><strong>Lokacija</strong><br>Kozarac Trnopolje 96</div>
-<div class="card"><strong>Stambena površina</strong><br>179 m²</div>
-<div class="card"><strong>Zemljište</strong><br>1092 m²</div>
-<div class="card"><strong>Sobe</strong><br>6</div>
-<div class="card"><strong>Godina gradnje</strong><br>1975</div>
-<div class="card"><strong>Cijena</strong><br>210 000 KM (107 000 €)</div>
-</div>
-</section>
+    <section>
+        <h2>Detalji Objekta</h2>
+        <div class="details">
+            <div class="card"><strong>Lokacija</strong><br>Kozarac Trnopolje 96</div>
+            <div class="card"><strong>Stambena površina</strong><br>179 m²</div>
+            <div class="card"><strong>Zemljište</strong><br>1092 m²</div>
+            <div class="card"><strong>Sobe</strong><br>6</div>
+            <div class="card"><strong>Godina gradnje</strong><br>1975</div>
+            <div class="card"><strong>Cijena</strong><br>210 000 KM (107 000 €)</div>
+        </div>
+    </section>
 
-<section>
-<h2>Prodaja - Višenamjenska kuća sa velikim zemljištem u blizini Kozarca</h2>
-<p>
-Na prodaju je <b>prostrana stambeno-poslovna nekretnina</b> na atraktivnoj lokaciji u okolini Kozarca (Trnopolje, opština Prijedor). 
-Ova nekretnina nudi <b>izuzetnu fleksibilnost korištenja</b>, kvalitetnu gradnju i veliko zemljište sa dodatnim potencijalom za razvoj.
-</p>
-<p>
-Kuća je izgrađena 1975. godine kao <b>funkcionalna cjelina za stanovanje i poslovanje</b>. U prizemlju se nalazi odvojeni poslovni prostor (ranije prodavnica sa skladištem), idealan za vlastiti biznis ili izdavanje. 
-Na spratu je komforan stambeni prostor sa dobrim rasporedom prostorija, više soba i balkonom. Ukupna neto površina objekta iznosi oko <b>180 m² na dvije etaže</b>.
-</p>
-<p>
-    Posebnu vrijednost daje <b>veliko zemljište od cca 1.362 m²</b>, koje pruža brojne mogućnosti – od uređenja dvorišta i vrta do dodatne gradnje ili proširenja poslovnih kapaciteta.
-    Parcela ima dobar pristup i kompletnu infrastrukturu, što omogućava jednostavno i praktično korištenje.
-</p>
-<p>
-    Nekretnina se nalazi u <b>mirnom, ali dobro povezanom naselju u blizini centra Kozarca</b>, sa direktnim pristupom asfaltnoj cesti i u uređenom okruženju.
-</p>
-<p>
-   Prema nalazu vještaka, objekat je građen <b>kvalitetno i funkcionalno</b>, klasičnom metodom gradnje. 
-   Svi objekti su uredno izgrađeni i posjeduju <b>kompletnu dokumentaciju i sve potrebne dozvole</b>, uključujući i poslovni prostor i pomoćne objekte. 
-</p>
-<p>
-    Kuća se trenutno ne koristi i zahtijeva određenu adaptaciju, što novom vlasniku daje priliku da je <b>uredi prema vlastitim željama i potrebama</b>.
-    Prema procjeni, uz relativno umjerena ulaganja objekat se može brzo dovesti u potpuno funkcionalno stanje.
-</p>
-  <h3>Ključne prednosti</h3>
-  <ul>
-    <li>Stambeno-poslovni objekat sa odvojenim poslovnim prostorom</li>
-    <li>Približno 179 m² neto korisne površine</li>
-    <li>Veliko zemljište od približno 1.362 m²</li>
-    <li>Mirna lokacija u blizini centra Kozarca</li>
-    <li>Direktan pristup asfaltnoj cesti</li>
-    <li>Mogućnost dodatnog uređenja, proširenja ili gradnje</li>
-    <li>Potpuno legalna nekretnina sa urednom dokumentacijom</li>
-    <li>Pogodno za porodični život, poslovanje, izdavanje ili investiciju</li>
-    <li>Procijenjena vrijednost od strane ovlaštenog sudskog vještaka: 249.530 KM</li>
-  </ul>
-</section>
+    <section>
+        <h2>Prodaja - Višenamjenska kuća sa velikim zemljištem u blizini Kozarca</h2>
+        <p>
+            Na prodaju je <b>prostrana stambeno-poslovna nekretnina</b> na atraktivnoj lokaciji u okolini Kozarca
+            (Trnopolje, opština Prijedor).
+            Ova nekretnina nudi <b>izuzetnu fleksibilnost korištenja</b>, kvalitetnu gradnju i veliko zemljište sa
+            dodatnim potencijalom za razvoj.
+        </p>
+        <p>
+            Kuća je izgrađena 1975. godine kao <b>funkcionalna cjelina za stanovanje i poslovanje</b>. U prizemlju se
+            nalazi odvojeni poslovni prostor (ranije prodavnica sa skladištem), idealan za vlastiti biznis ili
+            izdavanje.
+            Na spratu je komforan stambeni prostor sa dobrim rasporedom prostorija, više soba i balkonom. Ukupna neto
+            površina objekta iznosi oko <b>180 m² na dvije etaže</b>.
+        </p>
+        <p>
+            Posebnu vrijednost daje <b>veliko zemljište od cca 1.362 m²</b>, koje pruža brojne mogućnosti – od uređenja
+            dvorišta i vrta do dodatne gradnje ili proširenja poslovnih kapaciteta.
+            Parcela ima dobar pristup i kompletnu infrastrukturu, što omogućava jednostavno i praktično korištenje.
+        </p>
+        <p>
+            Nekretnina se nalazi u <b>mirnom, ali dobro povezanom naselju u blizini centra Kozarca</b>, sa direktnim
+            pristupom asfaltnoj cesti i u uređenom okruženju.
+        </p>
+        <p>
+            Prema nalazu vještaka, objekat je građen <b>kvalitetno i funkcionalno</b>, klasičnom metodom gradnje.
+            Svi objekti su uredno izgrađeni i posjeduju <b>kompletnu dokumentaciju i sve potrebne dozvole</b>,
+            uključujući i poslovni prostor i pomoćne objekte.
+        </p>
+        <p>
+            Kuća se trenutno ne koristi i zahtijeva određenu adaptaciju, što novom vlasniku daje priliku da je <b>uredi
+                prema vlastitim željama i potrebama</b>.
+            Prema procjeni, uz relativno umjerena ulaganja objekat se može brzo dovesti u potpuno funkcionalno stanje.
+        </p>
+        <h3>Ključne prednosti</h3>
+        <ul>
+            <li>Stambeno-poslovni objekat sa odvojenim poslovnim prostorom</li>
+            <li>Približno 179 m² neto korisne površine</li>
+            <li>Veliko zemljište od približno 1.362 m²</li>
+            <li>Mirna lokacija u blizini centra Kozarca</li>
+            <li>Direktan pristup asfaltnoj cesti</li>
+            <li>Mogućnost dodatnog uređenja, proširenja ili gradnje</li>
+            <li>Potpuno legalna nekretnina sa urednom dokumentacijom</li>
+            <li>Pogodno za porodični život, poslovanje, izdavanje ili investiciju</li>
+            <li>Procijenjena vrijednost od strane ovlaštenog sudskog vještaka: <b>249.530 KM</b></li>
+        </ul>
+    </section>
 
 
-<!--<section>
-<h2>Fotogalerie</h2>
-<div class="gallery">
-<img src="images/haus1.jpg" alt="Haus">
-<img src="images/haus2.jpg" alt="Wohnzimmer">
-<img src="images/haus3.jpg" alt="Küche">
-<img src="images/haus4.jpg" alt="Garten">
-</div>
-</section> -->
+    <section>
+        <h2>Fotogalerija</h2>
+        <div class="gallery">
+            <figure>
+                <img src="images/parcele.png" alt="Parcele 2878 i 2879 su na prodaju" onclick="openLightbox(0)">
+                <figcaption>Parcele 2878 i 2879 su na prodaju</figcaption>
+            </figure>
+            <figure>
+                <img src="images/house1.png" alt="Polged sa ulice (kuća)" onclick="openLightbox(1)">
+                <figcaption>Polged sa ulice (kuća)</figcaption>
+            </figure>
+            <figure>
+                <img src="images/house2.png" alt="Polged sa ulice (zemljište)" onclick="openLightbox(2)">
+                <figcaption>Polged sa ulice (zemljište)</figcaption>
+            </figure>            
+            <!---->
+        </div>
 
-<section>
-<h2>Preuzimanje/Download</h2>
-<div class="downloads">
-<a href="downloads/Procijena Kuca Kozarac 2026.pdf" download>Procijena Sudskog Tumača</a>
-<!--<a href="downloads/grundriss.pdf" download>Grundriss herunterladen</a>
+        <!-- Lightbox -->
+        <div id="lightbox">
+            <span class="close" onclick="closeLightbox()">&times;</span>
+            <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+            <img id="lightbox-img">
+            <button class="next" onclick="changeImage(1)">&#10095;</button>
+        </div>
+
+    </section>
+
+    <section>
+        <div style="text-align: center;"><a href="https://maps.app.goo.gl/S64bXMZsNZxXXiYb8" target="_blank"
+                class="map-btn">
+                📍 Otvori na Google Maps
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <h2>Preuzimanje/Download</h2>
+        <div class="downloads">
+            <a href="downloads/Procijena Kuca Kozarac 2026.pdf" download>Procijena Sudskog Tumača (14.7 MB)</a>
+            <!--<a href="downloads/grundriss.pdf" download>Grundriss herunterladen</a>
 <a href="downloads/energieausweis.pdf" download>Energieausweis herunterladen</a> -->
-</div>
-</section>
+        </div>
+    </section>
 
-<section>
-  <h2>Kontakt</h2>
+    <section>
+        <h2>Kontakt</h2>
 
-  <div class="contact-wrapper">
-    <div class="contact">
-      <p><strong>Kontaktperson:</strong> Ekrem Žerić</p>
-      <p><strong>Telefon:</strong> +387 65 824 879</p>
-    </div>
+        <div class="contact-wrapper">
+            <div class="contact">
+                <p><strong>Kontakt:</strong> Ekrem Žerić</p>
+                <p><strong>Telefon:</strong> +387 65 824 879</p>
+            </div>
 
-    <div class="contact">
-      <p><strong>Kontakt:</strong> Dženana Eminic</p>
-      <p><strong>Telefon:</strong> <a href="https://wa.me/436764605083" target="_blank">
-    <i class="fab fa-whatsapp" style="color: #25D366;"></i>+43 676 460 50 83</a></p>
-    </div>
-  </div>
-</section>
+            <div class="contact">
+                <p><strong>Kontakt:</strong> Dženana Eminic</p>
+                <p><strong>Telefon:</strong> <a href="https://wa.me/436764605083" target="_blank">
+                        <i class="fab fa-whatsapp" style="color: #25D366;"></i>+43 676 460 50 83</a></p>
+            </div>
+        </div>
+    </section>
 
-<footer>
-© 2026 Kuća Kozarac
-</footer>
+    <footer>
+        © 2026 Kuća Kozarac
+    </footer>
 
 </body>
+
 </html>

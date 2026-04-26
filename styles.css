@@ -11,3 +11,74 @@
   padding: 15px;
   border-radius: 8px;
 }
+.gallery {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gallery figure {
+  width: 300px;
+  margin: 0;
+}
+
+.gallery img {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.gallery figcaption {
+  margin-top: 8px;
+  text-align: center;
+  color: #555;
+}
+
+#lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+#lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.close,
+.prev,
+.next {
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close {
+  top: 20px;
+  right: 35px;
+}
+
+.prev {
+  left: 30px;
+}
+
+.next {
+  right: 30px;
+}
+
+.map-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #2b7cff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
