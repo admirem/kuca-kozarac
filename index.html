@@ -11,39 +11,59 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
-            background: #f5f5f5;
-            color: #333
+            background: #f7f3ec;
+            color: #2b2b2b
         }
 
         header {
             /* height: 70vh; */
             min-height: 280px;
-            background: url('images/hero.jpg') center/cover no-repeat;
+            background:
+                linear-gradient(rgba(30, 45, 35, 0.45), rgba(30, 45, 35, 0.45)),
+                url('images/house2.png') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         header h1 {
-            font-size: 48px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
+            font-size: 46px;
+            max-width: 1100px;
             margin: 0px;
+            padding: 18px 28px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
         }
 
         section {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
-            padding: 35px 20px
+            padding: 45px 25px
+        }
+
+        section:nth-of-type(even) {
+            background: rgba(255, 255, 255, 0.55);
+            border-radius: 16px;
         }
 
         h2 {
             text-align: center;
+            color: #2f4f3e;
+            font-size: 30px;
             margin-bottom: 30px
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #c89b5b;
+            margin: 12px auto 0;
         }
 
         .details {
@@ -55,9 +75,59 @@
 
         .card {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1)
+            padding: 24px 18px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #c89b5b;
+
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 22px rgba(0, 0, 0, 0.12);
+        }
+
+        .card strong {
+            color: #2f4f3e;
+            font-size: 17px;
+        }
+
+        .card .value {
+            display: block;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 8px;
+            color: #333;
+        }
+
+        .details-main {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .details-secondary {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .secondary-card {
+            width: 260px;
+            min-height: 90px;
+            padding: 18px;
+        }
+
+        .secondary-card strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .secondary-card span {
+            font-size: 18px;
         }
 
         .gallery {
@@ -68,18 +138,39 @@
 
         .gallery img {
             width: 100%;
-            border-radius: 8px
+            height: 230px;
+            object-fit: cover;
+
+            border-radius: 10px;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+
+            cursor: pointer;
+            transition: transform 0.25s ease;
         }
 
-        .downloads a {
-            display: block;
-            margin: 10px 0;
-            padding: 12px;
-            background: #2c7be5;
+        .gallery img:hover {
+            transform: scale(1.025);
+        }
+        .downloads {
+            text-align: center;
+        }
+
+        .downloads a,
+        .map-btn {
+            display: inline-block;
+            background: #2f4f3e;
             color: white;
             text-decoration: none;
-            border-radius: 6px;
-            text-align: center
+            padding: 13px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .downloads a:hover,
+        .map-btn:hover {
+            background: #3e6651;
+            transform: translateY(-2px);
         }
 
         .contact {
@@ -145,13 +236,38 @@
 
     <section>
         <h2>Detalji Objekta</h2>
-        <div class="details">
-            <div class="card"><strong>Lokacija</strong><br>Kozarac Trnopolje 96</div>
-            <div class="card"><strong>Stambena površina</strong><br>179 m²</div>
-            <div class="card"><strong>Zemljište</strong><br>1092 m²</div>
-            <div class="card"><strong>Sobe</strong><br>6</div>
-            <div class="card"><strong>Godina gradnje</strong><br>1975</div>
-            <div class="card"><strong>Cijena</strong><br>170 000 KM (86 800 €)</div>
+        <div class="details-main">
+            <div class="card">
+                <strong>Stambena površina</strong>
+                <span class="value">179 m²</span>
+            </div>
+
+            <div class="card">
+                <strong>Zemljište</strong>
+                <span class="value">1092 m²</span>
+            </div>
+
+            <div class="card">
+                <strong>Sobe</strong>
+                <span class="value">6</span>
+            </div>
+
+            <div class="card">
+                <strong>Cijena</strong>
+                <span class="value">170 000 KM<br>(86 800 €)</span>
+            </div>
+        </div>
+
+        <div class="details-secondary">
+            <div class="card secondary-card">
+                <strong>Lokacija</strong>
+                <span>Kozarac Trnopolje 96</span>
+            </div>
+
+            <div class="card secondary-card">
+                <strong>Godina gradnje</strong>
+                <span>1975</span>
+            </div>
         </div>
     </section>
 
@@ -218,7 +334,7 @@
             <figure>
                 <img src="images/house2.png" alt="Polged sa ulice (zemljište)" onclick="openLightbox(2)">
                 <figcaption>Polged sa ulice (zemljište)</figcaption>
-            </figure>            
+            </figure>
             <!---->
         </div>
 
